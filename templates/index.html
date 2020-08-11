@@ -1,0 +1,200 @@
+{% extends base %}
+
+{% block contents %}
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Dashboard - Brand</title>
+    <link rel="stylesheet" href="stock_oi/static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="stock_oi/static/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="stock_oi/static/css/untitled.css">
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <nav class="navbar navbar-dark bg-primary align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
+            <div class="container-fluid d-flex flex-column p-0">
+                <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0">
+                    <div class="sidebar-brand-icon rotate-n-15"><img class="border rounded-circle img-profile" src="stock_oi/static/img/logo.png" style="width: 38px;height: 38px;"></div>
+                    <div class="sidebar-brand-text mx-3"><span>VA TRADE</span></div>
+                </a>
+                <hr class="sidebar-divider my-0">
+                <ul class="nav navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="#coi"><i class="far fa-chart-bar"></i><span>Change in Open Interest</span></a><a class="nav-link active" href="#oi"><i class="fas fa-chart-bar"></i><span>Open Interest</span></a><a class="nav-link active"
+                            href="#mpc"><i class="fas fa-tachometer-alt"></i><span>Max Pain</span></a><a class="nav-link active" href="#nb"><i class="fas fa-chart-line"></i><span>Futures OI Buildup</span></a></li>
+                </ul>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper" >
+            <div id="content" style="background-color: #091228 ;" >
+                <nav class="navbar navbar-light navbar-expand bg-dark shadow mb-4 topbar static-top" style="background-color: rgb(6,19,37);">
+                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                        <div> {{ embed(roots.search) }}</div>
+                        <div  align="right"> {{ embed(roots.time) }} </div>
+
+                    </div>
+                </nav>
+                <div class="container-fluid" style="background-color: #061325;">
+                    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+                        <h3 class="text-white mb-0" style="color: rgb(255,255,255);">Dashboard</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-left-primary py-2" style="background-color: #132238;">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col mr-2">
+                                            <div class="text-uppercase text-white font-weight-bold text-xs mb-1"><span>PCR</span></div>
+                                            <div class="text-dark font-weight-bold h3 mb-0"><span>{{ embed(roots.pcr) }}</span></div>
+                                        </div>
+                                        <div class="col-auto"><i class="fas fa-chart-line fa-2x text-gray-300" style="opacity: 0.50;"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-left-success py-2" style="background-color: rgb(19,34,56);">
+                                <div class="card-body border-light" style="background-color: #132238;">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col mr-2">
+                                            <div class="text-uppercase text-white font-weight-bold text-xs mb-1"><span>PCR CHange</span></div>
+                                            <div class="text-dark font-weight-bold h5 mb-0"><span>{{ embed(roots.pcrChange) }}</span></div>
+                                        </div>
+                                        <div class="col-auto"><i class="fas fa-chart-area fa-2x text-gray-300" style="opacity: 0.50;"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-left-info py-2" style="background-color: rgb(19,34,56);">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col mr-2">
+                                            <div class="text-uppercase text-white font-weight-bold text-xs mb-1"><span>CPR</span></div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="text-dark font-weight-bold h5 mb-0 mr-3"><span>{{ embed(roots.sentiment) }}</span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto"><i class="fas fa-less-than-equal fa-2x text-gray-300" style="opacity: 0.50;"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-left-warning py-2" style="background-color: rgb(19,34,56);margin: 0px;">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col mr-2">
+                                            <div class="text-uppercase text-white font-weight-bold text-xs mb-1"><span>OI BUildup</span></div>
+                                            <div class="text-dark font-weight-bold h5 mb-0"><span>{{ embed(roots.dayType) }}</span></div>
+                                        </div>
+                                        <div class="col-auto"><i class="fas fa-bezier-curve fa-2x text-gray-300" style="opacity: 0.50;"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div id="coi" class="col-lg-7 col-xl-6">
+                            <div class="card shadow mb-4">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h6 class="text-white font-weight-bold m-0">Change in Open Interest</h6>
+                                    <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button"></button>
+                                        <div class="dropdown-menu shadow dropdown-menu-right animated--fade-in" role="menu">
+                                            <p class="text-center dropdown-header">dropdown header:</p><a class="dropdown-item" role="presentation" href="#">&nbsp;Action</a><a class="dropdown-item" role="presentation" href="#">&nbsp;Another action</a>
+                                            <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="#">&nbsp;Something else here</a></div>
+                                    </div>
+                                </div>
+                                <div class="card-body text-dark" style="background-color: #030c1b;">
+                                    <div>{{ embed(roots.coi) }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="mpc" class="col-lg-7 col-xl-6">
+                            <div class="card shadow mb-4">
+                                <div class="card-header d-flex justify-content-between align-items-center" style="background-color: #132238;">
+                                    <h6 class="text-white font-weight-bold m-0" style="color: rgb(255,255,255);">Max Pain</h6>
+                                    <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button"></button>
+                                        <div class="dropdown-menu shadow dropdown-menu-right animated--fade-in" role="menu">
+                                            <p class="text-center dropdown-header">dropdown header:</p><a class="dropdown-item" role="presentation" href="#">&nbsp;Action</a><a class="dropdown-item" role="presentation" href="#">&nbsp;Another action</a>
+                                            <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="#">&nbsp;Something else here</a></div>
+                                    </div>
+                                </div>
+                                <div class="card-body" style="background-color: #000000;">
+                                    <div>{{ embed(roots.mpc) }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-7 col-xl-6">
+                            <div id="oi" class="card shadow mb-4">
+                                <div class="card-header d-flex justify-content-between align-items-center" style="/*color: rgb(52,90,203);*//*background-color: rgb(51,90,203);*/">
+                                    <h6 class="text-white font-weight-bold m-0">Open Interest</h6>
+                                    <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button"></button>
+                                        <div class="dropdown-menu shadow dropdown-menu-right animated--fade-in" role="menu">
+                                            <p class="text-center dropdown-header">dropdown header:</p><a class="dropdown-item" role="presentation" href="#">&nbsp;Action</a><a class="dropdown-item" role="presentation" href="#">&nbsp;Another action</a>
+                                            <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="#">&nbsp;Something else here</a></div>
+                                    </div>
+                                </div>
+                                <div class="card-body" style="background-color: #0b0c11;">
+                                    <div>{{ embed(roots.oi) }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="nb"  class="col-lg-5 col-xl-6">
+                            <div class="card shadow mb-4">
+                                <div class="card-header d-flex justify-content-between align-items-center" style="/*background-color: rgb(41,81,195);*/">
+                                    <h6 class="text-white font-weight-bold m-0">Futures Buildup</h6>
+                                </div>
+                                <div class="card-body" style="background-color: #07080a;">
+                                    <div>{{ embed(roots.nb) }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-7 col-xl-6">
+                            <div class="card shadow mb-4">
+                                <div class="card-header d-flex justify-content-between align-items-center" style="/*color: rgb(52,90,203);*//*background-color: rgb(51,90,203);*/">
+                                    <h6 class="text-white font-weight-bold m-0">Buy Signals</h6>
+                                </div>
+                                <div class="card-body" style="background-color: #0b0c11;">
+                                    <div class="table-responsive">
+                                           {{ embed(roots.signals) }}
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-7 col-xl-6">
+                            <div class="card shadow mb-4">
+                                <div class="card-header d-flex justify-content-between align-items-center" style="/*color: rgb(52,90,203);*//*background-color: rgb(51,90,203);*/">
+                                    <h6 class="text-white font-weight-bold m-0">Sell Signals</h6>
+                                </div>
+                                <div class="card-body" style="background-color: #0b0c11;">
+                                    <div class="table">
+
+                                            {{ embed(roots.signals2) }}
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>
+    <script src="stock_oi/static/js/jquery.min.js"></script>
+    <script src="stock_oi/static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="stock_oi/static/js/chart.min.js"></script>
+    <script src="stock_oi/static/js/bs-init.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="stock_oi/static/js/theme.js"></script>
+</body>
+
+</html>
+{% endblock %}
