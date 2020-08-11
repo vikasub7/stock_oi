@@ -795,70 +795,72 @@ def callback():
         hour = (ctime.strftime("%H"))
         minute = (ctime.strftime("%M"))
         sec = (ctime.strftime("%S"))
-
+        filter1 = (hour * 3600) + (minute * 60)
         webTime = 'Last Updated:' + hour + ':' + minute + ':' + sec
         pre.text = """<font size="1"  face ="Nunito">{a}</font>""".format(a=webTime)
+        if (filter1 > 33600 and filter1 < 57600):
 
-        Buyers = pd.read_csv("stock_oi/data/Buyers.csv")
-        Sellers = pd.read_csv("stock_oi/data/Sellers.csv")
+    
+            Buyers = pd.read_csv("stock_oi/data/Buyers.csv")
+            Sellers = pd.read_csv("stock_oi/data/Sellers.csv")
 
-        source.data = get_df(symbol)
-        source2.data = get_oi_data(symbol)
-        sourceTable.data = Buyers
-        sourceTable2.data = Sellers
+            source.data = get_df(symbol)
+            source2.data = get_oi_data(symbol)
+            sourceTable.data = Buyers
+            sourceTable2.data = Sellers
 
 
-        if pcr > 1:
-            pcrDiv.text = """<font size="3" color="#037645" face ="Nunito">{a}</font>""".format(a=pcr)
-        else:
-            pcrDiv.text = """<font size="3" color="#E74C3C" face ="Nunito">{a}</font>""".format(a=pcr)
+            if pcr > 1:
+                pcrDiv.text = """<font size="3" color="#037645" face ="Nunito">{a}</font>""".format(a=pcr)
+            else:
+                pcrDiv.text = """<font size="3" color="#E74C3C" face ="Nunito">{a}</font>""".format(a=pcr)
 
-        if pe_oi_change > ce_oi_change or ce_oi_change < 0:
-            pcrCDiv.text = """<font size="3" color="#037645" face ="Nunito">{a}</font>""".format(a=pcr_change)
-        else:
-            pcrCDiv.text = """<font size="3" color="#E74C3C" face ="Nunito">{a}</font>""".format(a=pcr_change)
+            if pe_oi_change > ce_oi_change or ce_oi_change < 0:
+                pcrCDiv.text = """<font size="3" color="#037645" face ="Nunito">{a}</font>""".format(a=pcr_change)
+            else:
+                pcrCDiv.text = """<font size="3" color="#E74C3C" face ="Nunito">{a}</font>""".format(a=pcr_change)
 
-        #p.x_range.start = minRange
-        #p.x_range.end = maxRange
-        #p.y_range.start = min_oi_change
-        #p.y_range.end = max_oi_change
-        pv1.glyph.width = width
-        pv1.glyph.x = dodge('strikePrice', -width / 2, range=p.x_range)
-        pv2.glyph.width = width
-        pv2.glyph.x = dodge('strikePrice', width / 2, range=p.x_range)
-        ltp.location = df['Nifty'].iloc[1]
-        my_label.x = df['Nifty'].iloc[1]
-        my_label.y = max_oi_change/2
-        my_label.text = str(df['Nifty'].iloc[1])
+            #p.x_range.start = minRange
+            #p.x_range.end = maxRange
+            #p.y_range.start = min_oi_change
+            #p.y_range.end = max_oi_change
+            pv1.glyph.width = width
+            pv1.glyph.x = dodge('strikePrice', -width / 2, range=p.x_range)
+            pv2.glyph.width = width
+            pv2.glyph.x = dodge('strikePrice', width / 2, range=p.x_range)
+            ltp.location = df['Nifty'].iloc[1]
+            my_label.x = df['Nifty'].iloc[1]
+            my_label.y = max_oi_change/2
+            my_label.text = str(df['Nifty'].iloc[1])
 
-        #p2.x_range.start = minRange
-        #p2.x_range.end = maxRange
-        #p2.y_range.start = min_oi
-        #p2.y_range.end = max_oi
-        p2v1.glyph.width = width
-        p2v1.glyph.x = dodge('strikePrice', -width / 2, range=p.x_range)
-        p2v2.glyph.width = width
-        p2v2.glyph.x = dodge('strikePrice', width / 2, range=p.x_range)
-        ltp2.location = df['Nifty'].iloc[1]
-        my_label2.x = df['Nifty'].iloc[1]
-        my_label2.y = max_oi/2
-        my_label2.text = str(df['Nifty'].iloc[1])
+            #p2.x_range.start = minRange
+            #p2.x_range.end = maxRange
+            #p2.y_range.start = min_oi
+            #p2.y_range.end = max_oi
+            p2v1.glyph.width = width
+            p2v1.glyph.x = dodge('strikePrice', -width / 2, range=p.x_range)
+            p2v2.glyph.width = width
+            p2v2.glyph.x = dodge('strikePrice', width / 2, range=p.x_range)
+            ltp2.location = df['Nifty'].iloc[1]
+            my_label2.x = df['Nifty'].iloc[1]
+            my_label2.y = max_oi/2
+            my_label2.text = str(df['Nifty'].iloc[1])
 
-        #p3.y_range.start = 0
-        #p3.y_range.end = int(nifty_fut['Open Interest'].max())
-        p3.extra_y_ranges['y2'].start = int(nifty_fut['Close'].min() - (nifty_fut['Close'].min()*0.02))
-        p3.extra_y_ranges['y2'].end = int(nifty_fut['Close'].max() + (nifty_fut['Close'].max() * 0.02))
-        p3l1.y_range_name = "y2"
-        p3a1.y_range_name = "y2"
+            #p3.y_range.start = 0
+            #p3.y_range.end = int(nifty_fut['Open Interest'].max())
+            p3.extra_y_ranges['y2'].start = int(nifty_fut['Close'].min() - (nifty_fut['Close'].min()*0.02))
+            p3.extra_y_ranges['y2'].end = int(nifty_fut['Close'].max() + (nifty_fut['Close'].max() * 0.02))
+            p3l1.y_range_name = "y2"
+            p3a1.y_range_name = "y2"
 
-        #p4.x_range.start = df['strikePrice'].iloc[0]
-        #p4.x_range.end = df['strikePrice'].iloc[-1]
-        #p4.y_range.start = minValue
-        #p4.y_range.end = maxValue
-        ltp4.location = mp
-        my_label3.x = mp
-        my_label3.y = (maxValue + minValue) / 2
-        my_label3.text =  str(mp)
+            #p4.x_range.start = df['strikePrice'].iloc[0]
+            #p4.x_range.end = df['strikePrice'].iloc[-1]
+            #p4.y_range.start = minValue
+            #p4.y_range.end = maxValue
+            ltp4.location = mp
+            my_label3.x = mp
+            my_label3.y = (maxValue + minValue) / 2
+            my_label3.text =  str(mp)
 
     except:
         pass
