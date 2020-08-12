@@ -18,7 +18,7 @@
         <nav class="navbar navbar-dark bg-primary align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
             <div class="container-fluid d-flex flex-column p-0">
                 <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0">
-                    <div class="sidebar-brand-icon rotate-n-15"><img class="border rounded-circle img-profile" src="stock_oi/static/img/logo.png" style="width: 38px;height: 38px;"></div>
+                    <div class="sidebar-brand-icon rotate-n-15"><img  src="stock_oi/static/img/logo.png" style="width: 38px;height: 38px;"></div>
                     <div class="sidebar-brand-text mx-3"><span>VA TRADE</span></div>
                 </a>
                 <hr class="sidebar-divider my-0">
@@ -105,11 +105,7 @@
                             <div class="card shadow mb-4">
                                 <div class="card-header d-flex justify-content-between align-items-center">
                                     <h6 class="text-white font-weight-bold m-0">Change in Open Interest</h6>
-                                    <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button"></button>
-                                        <div class="dropdown-menu shadow dropdown-menu-right animated--fade-in" role="menu">
-                                            <p class="text-center dropdown-header">dropdown header:</p><a class="dropdown-item" role="presentation" href="#">&nbsp;Action</a><a class="dropdown-item" role="presentation" href="#">&nbsp;Another action</a>
-                                            <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="#">&nbsp;Something else here</a></div>
-                                    </div>
+
                                 </div>
                                 <div class="card-body text-dark" style="background-color: #030c1b;">
                                     <div>{{ embed(roots.coi) }}</div>
@@ -120,11 +116,6 @@
                             <div class="card shadow mb-4">
                                 <div class="card-header d-flex justify-content-between align-items-center" style="background-color: #132238;">
                                     <h6 class="text-white font-weight-bold m-0" style="color: rgb(255,255,255);">Max Pain</h6>
-                                    <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button"></button>
-                                        <div class="dropdown-menu shadow dropdown-menu-right animated--fade-in" role="menu">
-                                            <p class="text-center dropdown-header">dropdown header:</p><a class="dropdown-item" role="presentation" href="#">&nbsp;Action</a><a class="dropdown-item" role="presentation" href="#">&nbsp;Another action</a>
-                                            <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="#">&nbsp;Something else here</a></div>
-                                    </div>
                                 </div>
                                 <div class="card-body" style="background-color: #000000;">
                                     <div>{{ embed(roots.mpc) }}</div>
@@ -135,11 +126,7 @@
                             <div id="oi" class="card shadow mb-4">
                                 <div class="card-header d-flex justify-content-between align-items-center" style="/*color: rgb(52,90,203);*//*background-color: rgb(51,90,203);*/">
                                     <h6 class="text-white font-weight-bold m-0">Open Interest</h6>
-                                    <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button"></button>
-                                        <div class="dropdown-menu shadow dropdown-menu-right animated--fade-in" role="menu">
-                                            <p class="text-center dropdown-header">dropdown header:</p><a class="dropdown-item" role="presentation" href="#">&nbsp;Action</a><a class="dropdown-item" role="presentation" href="#">&nbsp;Another action</a>
-                                            <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="#">&nbsp;Something else here</a></div>
-                                    </div>
+
                                 </div>
                                 <div class="card-body" style="background-color: #0b0c11;">
                                     <div>{{ embed(roots.oi) }}</div>
